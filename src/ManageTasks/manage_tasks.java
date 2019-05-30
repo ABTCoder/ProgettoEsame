@@ -13,6 +13,7 @@ import java.nio.charset.Charset;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class manage_tasks {
 
@@ -40,9 +41,11 @@ public class manage_tasks {
 	  public static void main(String[] args) throws IOException, JSONException {
 		  System.setProperty("http.agent", "Chrome"); //QUESTA ISTRUZIONE RISOLVE: server returned http response code 403 for url
 	      JSONObject json = readJsonFromUrl("https://www.dati.gov.it/api/3/action/package_show?id=d75a0f5f-729b-4b3c-8c5a-f70e6ff112a2");
-		  //JSONObject json = new JSONObject(IOUtils.toString(new URL("https://graph.facebook.com/me"), Charset.forName("UTF-8")));
-	      System.out.println(json.toString());
-	      //System.out.println(json.get("id"));
+	      JSONObject result = json.getJSONObject("result");
+	      JSONArray resources = result.getJSONArray("resources");
+	      System.out.println(resources.toString());
+	      //System.out.println(resources.get("));
+
 	  }
 
 }
