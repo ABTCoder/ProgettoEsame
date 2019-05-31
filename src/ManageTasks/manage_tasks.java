@@ -12,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
+import org.springframework.beans.factory.*;
+
 public class manage_tasks {
 
 	private static String readAll(Reader rd) throws IOException {
@@ -40,15 +42,15 @@ public class manage_tasks {
 	    writer.close();
 	}
 
-	  public static void main(String[] args) throws IOException, JSONException {
-		  System.setProperty("http.agent", "Chrome"); //QUESTA ISTRUZIONE RISOLVE: server returned http response code 403 for url
-	      JSONObject json = readJsonFromUrl("https://www.dati.gov.it/api/3/action/package_show?id=d75a0f5f-729b-4b3c-8c5a-f70e6ff112a2");
-	      JSONObject result = json.getJSONObject("result");
-	      JSONArray resources = result.getJSONArray("resources");
-	      JSONObject dataset = resources.getJSONObject(0); //Salva il primo elemento dell'JSONArray
+	public static void main(String[] args) throws IOException, JSONException {
+		System.setProperty("http.agent", "Chrome"); //QUESTA ISTRUZIONE RISOLVE: server returned http response code 403 for url
+	    JSONObject json = readJsonFromUrl("https://www.dati.gov.it/api/3/action/package_show?id=d75a0f5f-729b-4b3c-8c5a-f70e6ff112a2");
+	    JSONObject result = json.getJSONObject("result");
+	    JSONArray resources = result.getJSONArray("resources");
+	    JSONObject dataset = resources.getJSONObject(0); //Salva il primo elemento dell'JSONArray
 	      
-	      saveCSVFromUrl(dataset.getString("url"));
+	    saveCSVFromUrl(dataset.getString("url"));
 	      
-	  }
+	}
 
 }
