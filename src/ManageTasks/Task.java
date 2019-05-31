@@ -22,4 +22,36 @@ public class Task {
 		this.dataFine = dataFine;
 		this.durata = durata;
 	}
+
+	public int getnPGAtto() {
+		return nPGAtto;
+	}
+
+	public int getnPGAnno() {
+		return nPGAnno;
+	}
+
+	public String getTipologia() {
+		return tipologia;
+	}
+
+	public double getCompenso() {
+		return compenso;
+	}
+
+	public String getSoggettoConferente() {
+		return soggettoConferente;
+	}
+
+	public String getDataInizio() {
+		return dataInizio;
+	}
+
+	public String getDataFine() {
+		return dataFine;
+	}
+
+	public int getDurata() {
+		return durata;
+	}
 }
