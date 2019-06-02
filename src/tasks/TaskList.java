@@ -1,11 +1,14 @@
 package tasks;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.json.*;
 
 public class TaskList {
 
@@ -45,6 +48,29 @@ public class TaskList {
 			mList.add(new Task(n_atto, anno, tip, comp, sogg, in, fin, dur)); //Aggiunta dell'incarico
 		}
 		
+	}
+	
+	//Salva tutti i dati in formato json
+	public void saveData() throws IOException {
+		JSONArray data = new JSONArray();
+		
+		for(Task x : mList) {
+			JSONObject taskObject = new JSONObject();
+			taskObject.put(header.get(0), x.getnPGAtto());
+			taskObject.put(header.get(1), x.getnPGAtto());
+			taskObject.put(header.get(2), x.getTipologia());
+			taskObject.put(header.get(3), x.getCompenso());
+			taskObject.put(header.get(4), x.getSoggettoConferente());
+			taskObject.put(header.get(5), x.getDataInizio());
+			taskObject.put(header.get(6), x.getDataFine());
+			if(x.getDurata()!=0) taskObject.put(header.get(7), x.getDurata());
+			
+			data.put(taskObject);
+		}
+		
+		FileWriter writer = new FileWriter("data.json");
+		writer.write(data.toString());
+		writer.close();
 	}
 	
 	public void print() {

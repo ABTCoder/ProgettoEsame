@@ -84,6 +84,8 @@ public class manage_tasks {
 		TaskList tasklist = new TaskList(br);
 		tasklist.print();
 		
+		tasklist.saveData();
+		
 		fr.close();
 		
 	}
