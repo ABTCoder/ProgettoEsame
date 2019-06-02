@@ -1,4 +1,4 @@
-package ManageTasks;
+package tasks;
 
 public class Task {
 	
@@ -53,5 +53,11 @@ public class Task {
 
 	public int getDurata() {
 		return durata;
+	}
+	
+	@Override
+	public String toString() {
+		return nPGAtto+","+nPGAnno+","+tipologia+","+compenso+","+soggettoConferente+","
+				+dataInizio+","+dataFine+","+durata;
 	}
 }

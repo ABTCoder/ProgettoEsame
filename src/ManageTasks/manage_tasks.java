@@ -18,12 +18,13 @@ import java.io.FileNotFoundException;
 
 
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONTokener;
 
-
+import tasks.*;
 
 public class manage_tasks {
 
@@ -71,12 +72,18 @@ public class manage_tasks {
 		InputStreamReader isr = new InputStreamReader(fr, Charset.forName("UTF-8"));
 		BufferedReader br = new BufferedReader(isr);
 		
+		/*
 		String firstline = br.readLine();
 	
 		List<String> header = Stream.of(firstline.split(","))
 	      .map (elem -> new String(elem))
 	      .collect(Collectors.toList());
 		for(String x : header) System.out.println(x);
+		*/
+		
+		TaskList tasklist = new TaskList(br);
+		tasklist.print();
+		
 		fr.close();
 		
 	}
