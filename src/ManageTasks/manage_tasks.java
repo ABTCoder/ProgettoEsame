@@ -7,19 +7,23 @@ import java.io.Reader;
 import java.net.URL;
 import java.net.MalformedURLException;
 import java.nio.charset.Charset;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.nio.channels.*;
-import java.io.FileWriter;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONTokener;
 
-import urlHandler.*;
+
 
 public class manage_tasks {
 
@@ -66,9 +70,13 @@ public class manage_tasks {
 		}
 		InputStreamReader isr = new InputStreamReader(fr, Charset.forName("UTF-8"));
 		BufferedReader br = new BufferedReader(isr);
-		System.out.println((char)br.read());
-		System.out.println((char)br.read());
-		System.out.println((char)br.read());
+		
+		String firstline = br.readLine();
+	
+		List<String> header = Stream.of(firstline.split(","))
+	      .map (elem -> new String(elem))
+	      .collect(Collectors.toList());
+		for(String x : header) System.out.println(x);
 		fr.close();
 		
 	}
