@@ -3,6 +3,7 @@ package tasks;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,24 +53,27 @@ public class TaskList {
 	
 	//Salva tutti i dati in formato json
 	public void saveData() throws IOException {
-		JSONArray data = new JSONArray();
-		
-		for(Task x : mList) {
-			JSONObject taskObject = new JSONObject();
-			taskObject.put(header.get(0), x.getnPGAtto());
-			taskObject.put(header.get(1), x.getnPGAtto());
-			taskObject.put(header.get(2), x.getTipologia());
-			taskObject.put(header.get(3), x.getCompenso());
-			taskObject.put(header.get(4), x.getSoggettoConferente());
-			taskObject.put(header.get(5), x.getDataInizio());
-			taskObject.put(header.get(6), x.getDataFine());
-			if(x.getDurata()!=0) taskObject.put(header.get(7), x.getDurata());
-			
-			data.put(taskObject);
-		}
 		
 		FileWriter writer = new FileWriter("data.json");
-		writer.write(data.toString());
+		JSONWriter json = new JSONWriter(writer);
+		
+		json.array();
+		
+		for(Task x : mList) {
+			
+			json.object();
+			json.key(header.get(0)).value(x.getnPGAtto());
+			json.key(header.get(1)).value(x.getnPGAnno());
+			json.key(header.get(2)).value(x.getTipologia());
+			json.key(header.get(3)).value(x.getCompenso());
+			json.key(header.get(4)).value(x.getSoggettoConferente());
+			json.key(header.get(5)).value(x.getDataInizio());
+			json.key(header.get(6)).value(x.getDataFine());
+			if(x.getDurata()!=0) json.key(header.get(7)).value(x.getDurata());
+			json.endObject();
+			
+		}
+		json.endArray();
 		writer.close();
 	}
 	
