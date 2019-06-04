@@ -8,22 +8,26 @@ import java.net.MalformedURLException;
 import java.nio.charset.Charset;
 import java.nio.channels.*;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
-
 
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONTokener;
+import org.springframework.boot.SpringApplication;
 
 import tasks.*;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class manage_tasks {
 
 	public static void downloadFromUrl(String url, String path) throws IOException, MalformedURLException {
+		
 		//Crea uno stream da cui leggere i contenuti dell'URL
 		ReadableByteChannel readChannel = Channels.newChannel(new URL(url).openStream());
 		//Crea il file su cui salvare i dati dello stream ed ottiene il channel associato
@@ -32,9 +36,15 @@ public class manage_tasks {
 	    //I metodi transferFrom e transferTo sono molto efficienti quando si utilizzano dei buffered stream
 	    writeChannel.transferFrom(readChannel, 0, Long.MAX_VALUE);
 	    file.close();
+	    
+		/* TROPPO LENTO
+		InputStream is = new URL(url).openStream();
+		Files.copy(is, Paths.get(path));
+		*/
 	}
 
-	public static void main(String[] args) throws MalformedURLException, IOException{
+	public static void main(String[] args) throws MalformedURLException, IOException {
+		SpringApplication.run(manage_tasks.class, args);
 		System.setProperty("http.agent", "Chrome"); //QUESTA ISTRUZIONE RISOLVE: server returned http response code 403 for url
 	    
 		String url = "https://www.dati.gov.it/api/3/action/package_show?id=d75a0f5f-729b-4b3c-8c5a-f70e6ff112a2";
@@ -78,10 +88,11 @@ public class manage_tasks {
 		
 		TaskList tasklist = new TaskList(br);
 		tasklist.print();
-		
-		tasklist.saveData();
-		
+		FileWriter writer = new FileWriter("data.csv");
+		tasklist.saveData(writer);
+		writer.close();
 		fr.close();
+		
 		
 	}
 

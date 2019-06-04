@@ -3,7 +3,6 @@ package tasks;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,9 +51,9 @@ public class TaskList {
 	}
 	
 	//Salva tutti i dati in formato json
-	public void saveData() throws IOException {
+	public void saveData(FileWriter writer) throws IOException {
 		
-		FileWriter writer = new FileWriter("data.json");
+
 		JSONWriter json = new JSONWriter(writer);
 		
 		json.array();
@@ -74,7 +73,6 @@ public class TaskList {
 			
 		}
 		json.endArray();
-		writer.close();
 	}
 	
 	public void print() {
