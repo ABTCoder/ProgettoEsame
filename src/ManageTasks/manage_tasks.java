@@ -62,7 +62,7 @@ public class manage_tasks {
 				FileInputStream jsonstream = new FileInputStream("jsonIniziale.json");
 				InputStreamReader isr = new InputStreamReader(jsonstream, Charset.forName("UTF-8"));
 				//Il tokener estrae i tokens da un reader o da un inputstream
-				//Bisogna utilizzare un reader in questo caso perchè bisogna specificare che i caratteri utilizzati sono UTF-8
+				//Bisogna utilizzare un reader in questo caso perchï¿½ bisogna specificare che i caratteri utilizzati sono UTF-8
 				JSONTokener jt = new JSONTokener(isr);
 				JSONObject json = new JSONObject(jt);
 				
@@ -88,7 +88,7 @@ public class manage_tasks {
 		
 		TaskList tasklist = new TaskList(br);
 		tasklist.print();
-		FileWriter writer = new FileWriter("data.csv");
+		FileWriter writer = new FileWriter("data.json");
 		tasklist.saveData(writer);
 		writer.close();
 		fr.close();

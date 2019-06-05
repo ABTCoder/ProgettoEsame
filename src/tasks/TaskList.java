@@ -12,8 +12,8 @@ import org.json.*;
 
 public class TaskList {
 
-	private List<Task> mList = new ArrayList<Task>();
-	private List<String> header;
+	static private List<Task> mList = new ArrayList<Task>();
+	static private List<String> header;
 	
 	public TaskList(BufferedReader br) throws IOException {
 		//Lettura dell'header del file csv (metadati)
@@ -40,7 +40,7 @@ public class TaskList {
 			String in = temp.get(5);
 			String fin = temp.get(6);
 			int dur = 0;
-			//Visionando il dataset l'unico campo che potrebbe mancare è la durata
+			//Visionando il dataset l'unico campo che potrebbe mancare ï¿½ la durata
 			//Quindi lo si assegna a 0 nel caso non fosse presente
 			if(temp.size() < 8) dur = 0;
 			else dur = Integer.parseInt(temp.get(7));
@@ -79,6 +79,10 @@ public class TaskList {
 		for(Task x : mList) {
 			System.out.println(x);
 		}
+	}
+	
+	static public List<Task> getList(){
+		return mList;
 	}
 	
 }
