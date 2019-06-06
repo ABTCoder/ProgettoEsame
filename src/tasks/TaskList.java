@@ -27,30 +27,42 @@ public class TaskList {
 		String line="";
 		while((line=br.readLine())!=null) {
 			
-			List<String> temp = Stream.of(line.split(","))
-								.map (elem -> new String(elem))
-								.collect(Collectors.toList());
+			String[] values = line.split(",");
+			List<Object> temp = new ArrayList();
+			temp.add(values[0]);
+			temp.add(values[1]);
+			temp.add(values[2]);
+			temp.add(Double.parseDouble(values[3]));
+			temp.add(values[4]);
+			temp.add(values[5]);
+			temp.add(values[6]);
+			if (values.length < 8) temp.add("");
+			else temp.add(Integer.parseInt(values[7]));
 			
 			//Variabili temporanee per inizializzare un oggetto di tipo Task
+			/*
 			int n_atto = Integer.parseInt(temp.get(0));
 			int anno = Integer.parseInt(temp.get(1));
 			String tip = temp.get(2);
 			Double comp = Double.parseDouble(temp.get(3));
 			String sogg = temp.get(4);
 			String in = temp.get(5);
-			String fin = temp.get(6);
+			String fin = temp.get(6); */
+			
 			int dur = 0;
 			//Visionando il dataset l'unico campo che potrebbe mancare � la durata
 			//Quindi lo si assegna a 0 nel caso non fosse presente
 			if(temp.size() < 8) dur = 0;
-			else dur = Integer.parseInt(temp.get(7));
+			//else dur = Integer.parseInt(temp.get(7));
 			
-			mList.add(new Task(n_atto, anno, tip, comp, sogg, in, fin, dur)); //Aggiunta dell'incarico
+			//mList.add(new Task(n_atto, anno, tip, comp, sogg, in, fin, dur)); //Aggiunta dell'incarico
+			mList.add(new Task(header, temp));
 		}
 		
 	}
 	
 	//Salva tutti i dati in formato json
+	/*
 	public void saveData(FileWriter writer) throws IOException {
 		
 
@@ -74,6 +86,7 @@ public class TaskList {
 		}
 		json.endArray();
 	}
+	*/
 	
 	public void print() {
 		for(Task x : mList) {
@@ -84,5 +97,7 @@ public class TaskList {
 	static public List<Task> getList(){
 		return mList;
 	}
+	
+	
 	
 }

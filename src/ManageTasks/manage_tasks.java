@@ -89,7 +89,7 @@ public class manage_tasks {
 		TaskList tasklist = new TaskList(br);
 		tasklist.print();
 		FileWriter writer = new FileWriter("data.json");
-		tasklist.saveData(writer);
+		//tasklist.saveData(writer);
 		writer.close();
 		fr.close();
 		
