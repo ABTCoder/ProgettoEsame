@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import stats.Statistics;
 import tasks.Field;
 import tasks.Task;
 import tasks.TaskList;
@@ -33,7 +34,7 @@ public class TaskListController {
     }
     
     @RequestMapping("/stats")
-    public Map<String, Integer> stats(@RequestParam(value="field",defaultValue="Tipologia incarico") String field){
+    public List<Statistics> stats(@RequestParam(value="field",defaultValue="Tipologia incarico") String field){
     	return TaskList.calc(field);
     }
     

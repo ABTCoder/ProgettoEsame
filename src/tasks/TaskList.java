@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import stats.StatCalculator;
+import stats.Statistics;
 import stats.StringStatCalculator;
 
 public class TaskList {
@@ -109,16 +110,15 @@ public class TaskList {
 		return mList;
 	}
 	
-	static public Map<String,Integer> calc(String alias){
+	static public List<Statistics> calc(String alias){
 		StatCalculator cl = null;
 		boolean notfound = true;
-		String field = "";
+		
 		String type = "";
 		
 		//Verifica la presenza dell'attributo (passato sotto il suo alias)
 		for(Field f: metadata) {
 			if(f.getAlias().equals(alias)) {
-				field = f.getField();
 				type = f.getType();
 				notfound = false;
 				break;
@@ -126,8 +126,8 @@ public class TaskList {
 		}
 		
 		if(type.equals("String")) cl = new StringStatCalculator();
-		cl.calc(getList(), field);
-		return ((StringStatCalculator)cl).getResult();
+		cl.calc(getList(), alias);
+		return cl.getResults();
 	}
 	
 	static public List<Field> getMetadata() {

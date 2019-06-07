@@ -24,4 +24,11 @@ public class IntegerStatistics extends Statistics {
 	public int getMax() {
 		return max;
 	}
+	public int getStd() {
+		return std;
+	}
+	public int getSum() {
+		return sum;
+	}
+	
 }
