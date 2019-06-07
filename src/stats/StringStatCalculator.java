@@ -9,14 +9,22 @@ import tasks.Task;
 public class StringStatCalculator implements StatCalculator {
 
 	
-	private Map<String, Integer> result = new HashMap();
+	private Map<String, Integer> result = new HashMap<String, Integer>();
 	
 	@Override
 	public void calc(List<Task> elems, String field) {
 		for(Task x : elems) {
-			System.out.println("lol");
+			if(x.getFields().containsKey(field)) {
+				int count = result.containsKey(x.getFields().get(field)) ? result.get(x.getFields().get(field)) : 1;
+				result.put((String)x.getFields().get(field), count + 1);
+					
+			}
 		}
 
+	}
+	
+	public Map<String, Integer> getResult(){
+		return result;
 	}
 
 }
