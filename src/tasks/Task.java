@@ -4,36 +4,47 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Task {
 	
-	/*
-	private final int nPGAtto;
-	private final int nPGAnno;
+	@JsonProperty("N. PG Atto")
+	private final String n_atto;
+	@JsonProperty("Anno PG Atto")
+	private final String anno_atto;
+	@JsonProperty("Tipologia Incarico")
 	private final String tipologia;
+	@JsonProperty("Compenso presunto (Euro)")
 	private final double compenso;
-	private final String soggettoConferente;
-	private final String dataInizio;
-	private final String dataFine;
+	@JsonProperty("Soggetto conferente")
+	private final String soggetto;
+	@JsonProperty("Data inizio incarico")
+	private final String inizio;
+	@JsonProperty("Data fine incarico")
+	private final String fine;
+	@JsonProperty("Durata incarico (gg)")
 	private final int durata;
-	*/
 	
-	private Map<String, Object> fields = new LinkedHashMap<String, Object>();
 	
-	/*
-	public Task(int nPGAtto, int nPGAnno, String tipologia, double compenso, String soggettoConferente, String dataInizio, String dataFine, int durata)
+	
+	//private Map<String, Object> fields = new LinkedHashMap<String, Object>();
+	
+	
+	public Task(String n_atto, String anno_atto, String tipologia, double compenso, String soggetto, String inizio, String fine, int durata)
 	{
 	
-		this.nPGAtto = nPGAtto;
-		this.nPGAnno = nPGAnno;
+		this.n_atto = n_atto;
+		this.anno_atto = anno_atto;
 		this.tipologia = tipologia;
 		this.compenso = compenso;
-		this.soggettoConferente = soggettoConferente;
-		this.dataInizio = dataInizio;
-		this.dataFine = dataFine;
+		this.soggetto = soggetto;
+		this.inizio = inizio;
+		this.fine = fine;
 		this.durata = durata;
 		
 	}
-	*/
+	
+	/*
 	public Task(List<String> header, List<Object> elems) {
 		fields.put(header.get(0), elems.get(0));
 		fields.put(header.get(1), elems.get(1));
@@ -44,15 +55,15 @@ public class Task {
 		fields.put(header.get(6), elems.get(6));
 		if(elems.size() < 8) fields.put(header.get(7), "");
 		else fields.put(header.get(7), elems.get(7));
+	}*/
+
+	
+	public String getN_atto() {
+		return n_atto;
 	}
 
-	/*
-	public int getnPGAtto() {
-		return nPGAtto;
-	}
-
-	public int getnPGAnno() {
-		return nPGAnno;
+	public String getAnno_atto() {
+		return anno_atto;
 	}
 
 	public String getTipologia() {
@@ -63,16 +74,16 @@ public class Task {
 		return compenso;
 	}
 
-	public String getSoggettoConferente() {
-		return soggettoConferente;
+	public String getSoggetto() {
+		return soggetto;
 	}
 
-	public String getDataInizio() {
-		return dataInizio;
+	public String getInizio() {
+		return inizio;
 	}
 
-	public String getDataFine() {
-		return dataFine;
+	public String getFine() {
+		return fine;
 	}
 
 	public int getDurata() {
@@ -81,17 +92,18 @@ public class Task {
 	
 	@Override
 	public String toString() {
-		return nPGAtto+","+nPGAnno+","+tipologia+","+compenso+","+soggettoConferente+","
-				+dataInizio+","+dataFine+","+durata;
+		return n_atto+","+anno_atto+","+tipologia+","+compenso+","+soggetto+","
+				+inizio+","+fine+","+durata;
 	}
-	*/
 	
 	
+	/*
 	public Map<String, Object> getFields() {
 		return fields;
 	}
 	
+	
 	public String toString() {
 		return fields.toString();
-	}
+	}*/
 }

@@ -15,7 +15,7 @@ public class StringStatCalculator implements StatCalculator {
 	public void calc(List<Task> elems, String field) {
 		for(Task x : elems) {
 			if(x.getFields().containsKey(field)) {
-				int count = result.containsKey(x.getFields().get(field)) ? result.get(x.getFields().get(field)) : 1;
+				int count = result.containsKey(x.getFields().get(field)) ? result.get(x.getFields().get(field)) : 0;
 				result.put((String)x.getFields().get(field), count + 1);
 					
 			}
