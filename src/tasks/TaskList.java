@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import stats.NumberStatCalculator;
 import stats.StatCalculator;
 import stats.Statistics;
 import stats.StringStatCalculator;
@@ -126,6 +127,7 @@ public class TaskList {
 		}
 		
 		if(type.equals("String")) cl = new StringStatCalculator();
+		else if(type.equals("Double")) cl = new NumberStatCalculator();
 		cl.calc(getList(), alias);
 		return cl.getResults();
 	}
