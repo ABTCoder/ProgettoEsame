@@ -1,6 +1,5 @@
 package stats;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
 
@@ -18,21 +17,22 @@ public class NumberStatCalculator extends StatCalculator {
 	
 	@Override
 	public void calc(List<Task> elems, String field) {
-		double init = (Double) invokeMethod(elems.get(0), field);
 		//Inizializzo il minimo e il massimo con il campo del primo elemento della lista
+		double init = (Double) invokeMethod(elems.get(0), field);
 		max = min = init;
+		
 		for(Task x : elems) {
 			double num = (Double) invokeMethod(x, field);
-			sum+= num;
-			count++;
-			avg = sum / count;
+			sum+= num; //Somma
+			count++; //Conteggio
 			min = (num < min) ? num:min;
 			max = (num > max) ? num:max;
 			
 		}
+		avg = sum / count; //Media
 		
 		//Secondo ciclo per il calcolo della deviazione standard
-		double partial = 0;
+		double partial = 0; //Somma necessaria per la formula
 		for(Task x : elems) {
 			double num = (Double) invokeMethod(x, field);
 			partial+= num - avg;
@@ -40,6 +40,7 @@ public class NumberStatCalculator extends StatCalculator {
 		
 		std =  Math.sqrt(partial / count);
 		
+		//Aggiunta di un oggetto alla lista dei risulati DoubleStatistics che eredita da Statistics
 		result.add(new DoubleStatistics(field, count, avg, min, max, std, sum));
 	}
 

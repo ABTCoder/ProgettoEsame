@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -40,17 +39,6 @@ public class TaskList {
 		while((line=br.readLine())!=null) {
 			
 			String[] values = line.split(",");
-			/*
-			List<Object> temp = new ArrayList<Object>();
-			temp.add(values[0]);
-			temp.add(values[1]);
-			temp.add(values[2]);
-			temp.add(Double.parseDouble(values[3]));
-			temp.add(values[4]);
-			temp.add(values[5]);
-			temp.add(values[6]);
-			if (values.length < 8) temp.add("");
-			else temp.add(Integer.parseInt(values[7]));*/
 			
 			//Variabili temporanee per inizializzare un oggetto di tipo Task
 			
@@ -120,16 +108,24 @@ public class TaskList {
 		//Verifica la presenza dell'attributo (passato sotto il suo alias)
 		for(Field f: metadata) {
 			if(f.getAlias().equals(alias)) {
-				type = f.getType();
+				type = f.getType(); //Tipo di dato
 				notfound = false;
 				break;
 			}
 		}
 		
-		if(type.equals("String")) cl = new StringStatCalculator();
-		else if(type.equals("Double")) cl = new NumberStatCalculator();
-		cl.calc(getList(), alias);
-		return cl.getResults();
+		try {
+			if(notfound) throw new FieldNotPresent("Il campo richiesto non esiste o è errato!");
+			
+			if(type.equals("String")) cl = new StringStatCalculator();
+			else if(type.equals("Double")) cl = new NumberStatCalculator();
+			cl.calc(mList, alias);
+			return cl.getResults();
+		}
+		catch (FieldNotPresent e) {
+			System.out.println("Richiedere nuovamente le statistiche");
+			return null;
+		}
 	}
 	
 	static public List<Field> getMetadata() {

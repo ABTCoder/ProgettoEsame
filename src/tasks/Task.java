@@ -1,9 +1,5 @@
 package tasks;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Task {
@@ -26,10 +22,6 @@ public class Task {
 	private final int durata;
 	
 	
-	
-	//private Map<String, Object> fields = new LinkedHashMap<String, Object>();
-	
-	
 	public Task(String n_atto, String anno_atto, String tipologia, double compenso, String soggetto, String inizio, String fine, int durata)
 	{
 	
@@ -44,19 +36,6 @@ public class Task {
 		
 	}
 	
-	/*
-	public Task(List<String> header, List<Object> elems) {
-		fields.put(header.get(0), elems.get(0));
-		fields.put(header.get(1), elems.get(1));
-		fields.put(header.get(2), elems.get(2));
-		fields.put(header.get(3), elems.get(3));
-		fields.put(header.get(4), elems.get(4));
-		fields.put(header.get(5), elems.get(5));
-		fields.put(header.get(6), elems.get(6));
-		if(elems.size() < 8) fields.put(header.get(7), "");
-		else fields.put(header.get(7), elems.get(7));
-	}*/
-
 	
 	public String getN_atto() {
 		return n_atto;
@@ -97,13 +76,4 @@ public class Task {
 	}
 	
 	
-	/*
-	public Map<String, Object> getFields() {
-		return fields;
-	}
-	
-	
-	public String toString() {
-		return fields.toString();
-	}*/
 }
