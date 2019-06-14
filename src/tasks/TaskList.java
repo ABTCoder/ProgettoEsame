@@ -50,10 +50,10 @@ public class TaskList {
 			String in = values[5];
 			String fin = values[6]; 
 			
-			int dur = 0;
+			Object dur = 0;
 			//Visionando il dataset l'unico campo che potrebbe mancare � la durata
 			//Quindi lo si assegna a 0 nel caso non fosse presente
-			if(values.length < 8) dur = 0;
+			if(values.length < 8) dur = "";
 			else dur = Integer.parseInt(values[7]);
 			
 			mList.add(new Task(n_atto, anno, tip, comp, sogg, in, fin, dur)); //Aggiunta dell'incarico
@@ -124,7 +124,7 @@ public class TaskList {
 			return cl.getResults();
 		}
 		catch (FieldNotPresent e) {
-			System.out.println("Richiedere nuovamente le statistiche");
+			e.printStackTrace();
 			return null;
 		}
 	}

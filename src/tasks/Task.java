@@ -19,10 +19,10 @@ public class Task {
 	@JsonProperty("Data fine incarico")
 	private final String fine;
 	@JsonProperty("Durata incarico (gg)")
-	private final int durata;
+	private final Object durata;
 	
 	
-	public Task(String n_atto, String anno_atto, String tipologia, double compenso, String soggetto, String inizio, String fine, int durata)
+	public Task(String n_atto, String anno_atto, String tipologia, double compenso, String soggetto, String inizio, String fine, Object durata)
 	{
 	
 		this.n_atto = n_atto;
@@ -65,7 +65,7 @@ public class Task {
 		return fine;
 	}
 
-	public int getDurata() {
+	public Object getDurata() {
 		return durata;
 	}
 	
