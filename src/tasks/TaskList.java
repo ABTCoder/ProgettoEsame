@@ -118,7 +118,8 @@ public class TaskList {
 			if(notfound) throw new FieldNotPresent("Il campo richiesto non esiste o è errato!");
 			
 			if(type.equals("String")) cl = new StringStatCalculator();
-			else if(type.equals("Double")) cl = new NumberStatCalculator();
+			else if(type.equals("Double")) cl = new NumberStatCalculator("Double");
+			else if(type.equals("Integer")) cl = new NumberStatCalculator("Integer");
 			cl.calc(mList, alias);
 			return cl.getResults();
 		}

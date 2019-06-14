@@ -1,5 +1,6 @@
 package tasks;
 
+@SuppressWarnings("serial")
 public class FieldNotPresent extends Exception {
 	
 	FieldNotPresent() {

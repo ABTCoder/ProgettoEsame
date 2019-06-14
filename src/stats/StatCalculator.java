@@ -14,7 +14,9 @@ public abstract class StatCalculator {
 	public abstract void calc(List<Task> elems, String field);
 	
 	//Restituisce i risultati (Nel caso di numeri la lista avrà un solo elemento)
-	public abstract List<Statistics> getResults();
+	public List<Statistics> getResults(){
+		return result;
+	}
 	
 	protected Object invokeMethod(Object x, String name) {
 		Object temp = null;

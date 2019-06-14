@@ -1,6 +1,5 @@
 package stats;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,7 @@ public class StringStatCalculator extends StatCalculator {
 	@Override
 	public void calc(List<Task> elems, String field) {
 		for(Task x : elems) {		
-			//Ottiene l'attributo in base al field passato(alias)
+			//Ottiene il valore dell'attributo in base al field passato(alias)
 			String key = (String) invokeMethod(x, field);
 			
 			//Aumento del conteggio degli elementi unici
@@ -30,9 +29,5 @@ public class StringStatCalculator extends StatCalculator {
 
 	}
 	
-	@Override
-	public List<Statistics> getResults(){
-		return result;
-	}
 
 }

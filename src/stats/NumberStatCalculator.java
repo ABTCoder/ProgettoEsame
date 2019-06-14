@@ -7,7 +7,12 @@ import tasks.Task;
 
 public class NumberStatCalculator extends StatCalculator {
 
-
+	//Double o Integer
+	private String type;
+	public NumberStatCalculator(String type) {
+		this.type = type;
+	}
+	
 	private double sum = 0;
 	private double avg;
 	private double std;
@@ -40,13 +45,10 @@ public class NumberStatCalculator extends StatCalculator {
 		
 		std =  Math.sqrt(partial / count);
 		
-		//Aggiunta di un oggetto alla lista dei risulati DoubleStatistics che eredita da Statistics
-		result.add(new DoubleStatistics(field, count, avg, min, max, std, sum));
+		//Aggiunta di un oggetto alla lista dei risulati DoubleStatistics o IntegerStatistics che ereditano da Statistics
+		if(type.equals("Integer")) result.add(new IntegerStatistics(field, count, avg, min, max, std, sum));
+		else result.add(new DoubleStatistics(field, count, avg, min, max, std, sum));
 	}
 
-	@Override
-	public List<Statistics> getResults() {
-		return result;
-	}
 
 }
