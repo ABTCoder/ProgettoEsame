@@ -38,7 +38,7 @@ public class TaskList {
 		String line="";
 		while((line=br.readLine())!=null) {
 			
-			String[] values = line.split(",");
+			String[] values = line.split(","); //Suddivido la linea letta con il delimitatore ","
 			
 			//Variabili temporanee per inizializzare un oggetto di tipo Task
 			
@@ -69,38 +69,11 @@ public class TaskList {
 			}
 			
 			mList.add(new Task(n_atto, anno, tip, comp, sogg, in, fin, dur)); //Aggiunta dell'incarico
-			//mList.add(new Task(header, temp));
-		}
-		
-	}
-	
-	//Salva tutti i dati in formato json
-	/*
-	public void saveData(FileWriter writer) throws IOException {
-		
 
-		JSONWriter json = new JSONWriter(writer);
-		
-		json.array();
-		
-		for(Task x : mList) {
-			
-			json.object();
-			json.key(header.get(0)).value(x.getnPGAtto());
-			json.key(header.get(1)).value(x.getnPGAnno());
-			json.key(header.get(2)).value(x.getTipologia());
-			json.key(header.get(3)).value(x.getCompenso());
-			json.key(header.get(4)).value(x.getSoggettoConferente());
-			json.key(header.get(5)).value(x.getDataInizio());
-			json.key(header.get(6)).value(x.getDataFine());
-			if(x.getDurata()!=0) json.key(header.get(7)).value(x.getDurata());
-			json.endObject();
-			
 		}
-		json.endArray();
+		
 	}
-	*/
-	
+		
 	public void print() {
 		for(Task x : mList) {
 			System.out.println(x);
