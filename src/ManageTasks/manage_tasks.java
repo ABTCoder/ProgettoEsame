@@ -69,7 +69,7 @@ public class manage_tasks {
 				//In base alla struttura del json del progetto
 				JSONObject result = json.getJSONObject("result");
 				JSONArray resources = result.getJSONArray("resources");
-				JSONObject dataset = resources.getJSONObject(0); //Scelgo per ora il primo dataset
+				JSONObject dataset = resources.getJSONObject(3); //Dataset più grande
 				downloadFromUrl(dataset.getString("url"), "dataset.csv"); //Scarica il dataset in formato csv dall'url
 				System.out.println("DATASET SCARICATO");
 			}

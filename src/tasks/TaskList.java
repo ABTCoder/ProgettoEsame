@@ -42,19 +42,31 @@ public class TaskList {
 			
 			//Variabili temporanee per inizializzare un oggetto di tipo Task
 			
-			String n_atto = values[0];
-			String anno = values[1];
-			String tip = values[2];
-			double comp = Double.parseDouble(values[3]);
-			String sogg = values[4];
-			String in = values[5];
-			String fin = values[6]; 
+			String n_atto = "";
+			String anno = "";
+			String tip = "";
+			double comp = 0;
+			String sogg = "";
+			String in = "";
+			String fin = "";
+			Object dur = null;
 			
-			Object dur = 0;
-			//Visionando il dataset l'unico campo che potrebbe mancare � la durata
-			//Quindi lo si assegna a 0 nel caso non fosse presente
-			if(values.length < 8) dur = "";
-			else dur = Integer.parseInt(values[7]);
+			try {
+				n_atto = values[0];
+				anno = values[1];
+				tip = values[2];
+				comp = Double.parseDouble(values[3]);
+				sogg = values[4];
+				in = values[5];
+				fin = values[6]; 
+			
+				//Visionando il dataset l'unico campo che potrebbe causare errori se mancante e' la durata
+				//Quindi lo si passa come una stringa vuota nel caso non fosse presente
+				if(values.length < 8) dur = "";
+				else dur = Integer.parseInt(values[7]);
+			} catch(Exception e) {
+				continue;
+			}
 			
 			mList.add(new Task(n_atto, anno, tip, comp, sogg, in, fin, dur)); //Aggiunta dell'incarico
 			//mList.add(new Task(header, temp));

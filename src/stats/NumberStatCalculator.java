@@ -59,7 +59,8 @@ public class NumberStatCalculator extends StatCalculator {
 			double num = 0;
 			if(type.equals("Integer")) num = (double) (Integer)temp;
 			else num = (double) temp;
-			partial+= num - avg;
+			
+			partial+= Math.pow((num - avg),2);
 		}
 		
 		std =  Math.sqrt(partial / count);
