@@ -20,7 +20,7 @@ public class Task {
 	private final String fine;
 	@JsonProperty("Durata incarico (gg)")
 	private final Object durata;
-	
+	//JsonProperty permette di serializzare l'oggetto con un nome diverso da quello della variabile stessa
 	
 	public Task(String n_atto, String anno_atto, String tipologia, double compenso, String soggetto, String inizio, String fine, Object durata)
 	{

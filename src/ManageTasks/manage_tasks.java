@@ -8,7 +8,6 @@ import java.net.MalformedURLException;
 import java.nio.charset.Charset;
 import java.nio.channels.*;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -35,7 +34,7 @@ public class manage_tasks {
 	    writeChannel.transferFrom(readChannel, 0, Long.MAX_VALUE);
 	    file.close();
 	    
-		/* TROPPO LENTO
+		/* LENTO
 		InputStream is = new URL(url).openStream();
 		Files.copy(is, Paths.get(path));
 		*/
@@ -74,7 +73,7 @@ public class manage_tasks {
 		InputStreamReader isr = new InputStreamReader(fr, Charset.forName("UTF-8"));
 		BufferedReader br = new BufferedReader(isr);
 		
-		
+		//Carica tutti i campi in una lista (statica) di oggetti Task
 		TaskList tasklist = new TaskList(br);
 		tasklist.print();
 		fr.close();
