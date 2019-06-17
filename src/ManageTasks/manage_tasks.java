@@ -20,9 +20,24 @@ import tasks.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Classe contenente il main e l'avvio dell'applicazione Spring
+ * Se il dataset (in formato csv) non è presente all'avvio esso verrà scaricato dall'url
+ * Prima di avviare l'applicazione Spring verrà effettuato il parsing del dataset nella lista di oggetti Task
+ * @author Amal Benson Thaliath
+ *
+ */
+
 @SpringBootApplication
 public class manage_tasks {
 
+	/**
+	 * Metodo utilizzato per scaricare un qualsiasi tipo di file dall'url specificato
+	 * @param url l'url da cui scaricare il file
+	 * @param path percorso in cui verrà salvato il file
+	 * @throws IOException
+	 * @throws MalformedURLException
+	 */
 	public static void downloadFromUrl(String url, String path) throws IOException, MalformedURLException {
 		
 		//Crea uno stream da cui leggere i contenuti dell'URL
@@ -40,6 +55,12 @@ public class manage_tasks {
 		*/
 	}
 
+	/**
+	 * Main
+	 * @param args
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws MalformedURLException, IOException {
 		
 		System.setProperty("http.agent", "Chrome"); //QUESTA ISTRUZIONE RISOLVE: server returned http response code 403 for url

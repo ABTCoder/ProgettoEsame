@@ -12,27 +12,37 @@ import stats.StatCalculator;
 import stats.Statistics;
 import stats.StringStatCalculator;
 
+/**
+ * Classe service che effettua il parsing del dataset ed esegue le richieste passate al REST Controller
+ * I due unici attributi sono statici in modo da poter essere richiamati dal controller pur essendo stati inizializzati nel main
+ * @author Amal Benson Thaliath
+ *
+ */
 public class TaskList {
 
+	/**
+	 * Lista contenente tutti i dati, caricati in oggetti {@link tasks.Task}
+	 */
 	static private List<Task> mList = new ArrayList<Task>();
+	/**
+	 * Lista contenente tutti i metadati, caricati in oggetti {@link task.Field}
+	 */
 	static private List<Field> metadata = new ArrayList<Field>();
 	
 	public TaskList(BufferedReader br) throws IOException {
 		//Lettura dell'header del file csv
 		//Lettura di una linea e suddivisione dei singoli elementi delimitati dalla virgola
 		String firstline = br.readLine();
-		List<String> header = Stream.of(firstline.split(","))
-				 .map (elem -> new String(elem))
-			     .collect(Collectors.toList());
-		//Creazione metadata
-		metadata.add(new Field(header.get(0), "String", "n_atto"));
-		metadata.add(new Field(header.get(1), "String", "anno_atto"));
-		metadata.add(new Field(header.get(2), "String", "tipologia"));
-		metadata.add(new Field(header.get(3), "Double", "compenso"));
-		metadata.add(new Field(header.get(4), "String", "soggetto"));
-		metadata.add(new Field(header.get(5), "String", "inizio"));
-		metadata.add(new Field(header.get(6), "String", "fine"));
-		metadata.add(new Field(header.get(7), "Integer", "durata"));
+		String[] header = firstline.split(",");
+		//Creazione della lista dei metadati
+		metadata.add(new Field(header[0], "String", "n_atto"));
+		metadata.add(new Field(header[1], "String", "anno_atto"));
+		metadata.add(new Field(header[2], "String", "tipologia"));
+		metadata.add(new Field(header[3], "Double", "compenso"));
+		metadata.add(new Field(header[4], "String", "soggetto"));
+		metadata.add(new Field(header[5], "String", "inizio"));
+		metadata.add(new Field(header[6], "String", "fine"));
+		metadata.add(new Field(header[7], "Integer", "durata"));
 		
 		//Aggiunta degli effettivi elementi presenti nel csv
 		String line="";
