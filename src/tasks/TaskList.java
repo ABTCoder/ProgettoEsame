@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import stats.NumberStatCalculator;
 import stats.StatCalculator;
@@ -21,7 +19,7 @@ import stats.StringStatCalculator;
 public class TaskList {
 
 	/**
-	 * Lista contenente tutti i dati, caricati in oggetti {@link tasks.Task}
+	 * Lista contenente tutti gli incarichi, caricati in oggetti {@link tasks.Task}
 	 */
 	static private List<Task> mList = new ArrayList<Task>();
 	/**
@@ -29,6 +27,11 @@ public class TaskList {
 	 */
 	static private List<Field> metadata = new ArrayList<Field>();
 	
+	/**
+	 * Costruttore di TaskList, effettua il parsing del file csv e carica i metadati e i dati nelle liste rispettive
+	 * @param br il BufferedReader da cui verrà letto il file csv
+	 * @throws IOException
+	 */
 	public TaskList(BufferedReader br) throws IOException {
 		//Lettura dell'header del file csv
 		//Lettura di una linea e suddivisione dei singoli elementi delimitati dalla virgola
@@ -83,17 +86,29 @@ public class TaskList {
 		}
 		
 	}
-		
+	
+	/**
+	 * Stampa su console tutti gli elementi nella lista degli incarichi
+	 */
 	public void print() {
 		for(Task x : mList) {
 			System.out.println(x);
 		}
 	}
 	
+	/**
+	 * Restituisce tutti i dati (gli incarichi)
+	 * @return lista contenente elementi {@link tasks.Task}
+	 */
 	static public List<Task> getList(){
 		return mList;
 	}
 	
+	/**
+	 * Calcola le statistiche sul campo richiesto e le restituisce sottoforma di lista
+	 * @param alias il campo (colonna dei dati) su cui effettuare il calcolo, passato come il rispettivo alias
+	 * @return lista contenente oggetti {@link stats.Statistics}
+	 */
 	static public List<Statistics> calc(String alias){
 		StatCalculator cl = null;
 		boolean notfound = true;
@@ -124,6 +139,10 @@ public class TaskList {
 		}
 	}
 	
+	/**
+	 * Restituisce i metadati
+	 * @return lista contenente oggetti {@link tasks.Field}
+	 */
 	static public List<Field> getMetadata() {
 		return metadata;
 	}
