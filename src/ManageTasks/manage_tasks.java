@@ -21,9 +21,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Classe contenente il main e l'avvio dell'applicazione Spring
- * Se il dataset (in formato csv) non è presente all'avvio esso verrà scaricato dall'url
- * Prima di avviare l'applicazione Spring verrà effettuato il parsing del dataset nella lista di oggetti Task
+ * <p>Classe contenente il main e l'avvio dell'applicazione Spring </p>
+ * <p>Se il dataset (in formato csv) non è presente all'avvio esso verrà scaricato dall'url </p>
+ * <p>Prima di avviare l'applicazione Spring verrà effettuato il parsing del dataset nella lista di oggetti Task</p>
  * @author Amal Benson Thaliath
  *
  */
@@ -35,8 +35,8 @@ public class manage_tasks {
 	 * Metodo utilizzato per scaricare un qualsiasi tipo di file dall'url specificato
 	 * @param url l'url da cui scaricare il file
 	 * @param path percorso in cui verrà salvato il file
-	 * @throws IOException
-	 * @throws MalformedURLException
+	 * @throws IOException errore di lettura dall'url o scrittura su file
+	 * @throws MalformedURLException Se l'url è errato o la connessione non è andata a buon fine
 	 */
 	public static void downloadFromUrl(String url, String path) throws IOException, MalformedURLException {
 		

@@ -30,8 +30,8 @@ public class TaskListController {
     }
     
     /**
-     * Restituisce le statistiche per l'attributo richiesto (in formato JsonArray)
-     * Se non si specifica il field il valore di default è "tipologia"
+     * <p>Restituisce le statistiche per l'attributo richiesto (in formato JsonArray)</p>
+     * <p>Se non si specifica il field il valore di default è "tipologia"</p>
      * @param field l'attributo (colonna dei dati) su cui si vogliono effettuare i calcoli statistici
      * @return lista contenente oggetti {@link stats.Statistics}
      */
@@ -42,7 +42,7 @@ public class TaskListController {
     
     /**
      * Restituisce un JsonArray contenente tutti i metadati specificando nome, tipo di variabile e alias
-     * @return lista contenente oggetti {@link stats.Field}
+     * @return lista contenente oggetti {@link tasks.Field}
      */
     @RequestMapping("/metadata")
     public List<Field> metadata() {

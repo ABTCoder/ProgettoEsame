@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import stats.NumberStatCalculator;
 import stats.StatCalculator;
@@ -13,8 +11,8 @@ import stats.Statistics;
 import stats.StringStatCalculator;
 
 /**
- * Classe service che effettua il parsing del dataset ed esegue le richieste passate al REST Controller
- * I due unici attributi sono statici in modo da poter essere richiamati dal controller pur essendo stati inizializzati nel main
+ * <p>Classe service che effettua il parsing del dataset ed esegue le richieste passate al REST Controller</p>
+ * <p>I due unici attributi sono statici in modo da poter essere richiamati dal controller pur essendo stati inizializzati nel main</p>
  * @author Amal Benson Thaliath
  *
  */
@@ -25,10 +23,15 @@ public class TaskList {
 	 */
 	static private List<Task> mList = new ArrayList<Task>();
 	/**
-	 * Lista contenente tutti i metadati, caricati in oggetti {@link task.Field}
+	 * Lista contenente tutti i metadati, caricati in oggetti {@link tasks.Field}
 	 */
 	static private List<Field> metadata = new ArrayList<Field>();
 	
+	/**
+	 * Costruttore di TaskList, effettua il parsing del csv e carica i metadati e gli incarichi nelle rispettive liste
+	 * @param br il BufferedReader da cui legge il csv
+	 * @throws IOException se avvengono errori di lettura del file
+	 */
 	public TaskList(BufferedReader br) throws IOException {
 		//Lettura dell'header del file csv
 		//Lettura di una linea e suddivisione dei singoli elementi delimitati dalla virgola
@@ -83,24 +86,36 @@ public class TaskList {
 		}
 		
 	}
-		
+	
+	/**
+	 * Stampa su console tutti gli incarichi
+	 */
 	public void print() {
 		for(Task x : mList) {
 			System.out.println(x);
 		}
 	}
 	
+	/**
+	 * Restituisce tutti gli incarichi sottoforma di lista
+	 * @return lista contenente gli incarichi
+	 */
 	static public List<Task> getList(){
 		return mList;
 	}
 	
+	/**
+	 * Calcola le statistiche sul campo (colonna dei dati) passato sotto il suo alias
+	 * @param alias alias del campo
+	 * @return lista contenente le statistiche o la statistica del campo (sia per stringhe che per numeri)
+	 */
 	static public List<Statistics> calc(String alias){
 		StatCalculator cl = null;
 		boolean notfound = true;
 		
 		String type = "";
 		
-		//Verifica la presenza dell'attributo (passato sotto il suo alias)
+		//Verifica la presenza dell'attributo (passato come il suo alias)
 		for(Field f: metadata) {
 			if(f.getAlias().equals(alias)) {
 				type = f.getType(); //Tipo di dato
@@ -120,10 +135,14 @@ public class TaskList {
 		}
 		catch (FieldNotPresent e) {
 			e.printStackTrace();
-			return null;
+			return null; //Nel caso il campo non sia presente la richiesta GET restituirà un oggetto vuoto
 		}
 	}
 	
+	/**
+	 * Il service della restituzione dei metadati
+	 * @return lista contenente i metadati salvati nella classe {@link tasks.Field}
+	 */
 	static public List<Field> getMetadata() {
 		return metadata;
 	}
