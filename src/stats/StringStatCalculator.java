@@ -6,10 +6,25 @@ import java.util.Map;
 
 import tasks.Task;
 
+/**
+ * <p>Classe destinata al calcolo delle statistiche su un campo contenente stringhe</p>
+ * <p>Per ogni elemento unico conta le ricorrenze</p>
+ * @author Amal Benson Thaliath
+ *
+ */
 public class StringStatCalculator extends StatCalculator {
 
+	/**
+	 * HashMap che ad ogni elemento unico (chiave) associa un valore pari al suo numero di ricorrenze
+	 */
 	private Map<String, Integer> temp = new HashMap<String, Integer>();
 	
+	/**
+	 * <p>Implementazione del metodo astratto</p>
+	 * <p>Scorre lungo la lista degli incarichi, invoca il getter dell'attributo passato, se l'elemento è unico 
+	 * viene creata una nuova chiave correlata nella hashmap e il valore viene inzializzato a 1, altrimenti incrementa 
+	 * di 1 il valore precedente</p>
+	 */
 	@Override
 	public void calc(List<Task> elems, String field) {
 		for(Task x : elems) {		

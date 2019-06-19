@@ -5,21 +5,58 @@ import java.lang.Math;
 
 import tasks.Task;
 
+/**
+ * <p>Classe destinata al calcolo delle statistiche su attributi contenenti numeri, sia per Integer che per Double</p>
+ * <p>Calcola la somma, conteggio, media, minimo, massimo e deviazione standard per l'attributo passato (colonna di dati)</p>
+ * @author Amal Benson Thaliath
+ *
+ */
 public class NumberStatCalculator extends StatCalculator {
 
-	//Double o Integer
+	/**
+	 * <p>Specifica il tipo di numero, integer o double. Se è un intero i valori saranno approssimati</p>
+	 * <p>Questo è dovuto perchè avvolte una media o una deviazione con valori decimali avrebbe poco senso per
+	 *  certi dati interi (es: popolazione)</p>
+	 */
 	private String type;
+	/**
+	 * Costruttore invocato in {@link tasks.TaskList#calc(String)}
+	 * @param type Integer o Double
+	 */
 	public NumberStatCalculator(String type) {
 		this.type = type;
 	}
 	
+	/**
+	 * Somma di tutti i dati della colonna
+	 */
 	private double sum = 0;
+	/**
+	 * Media di tutti i dati della colonna
+	 */
 	private double avg;
+	/**
+	 * Deviazione standard
+	 */
 	private double std;
+	/**
+	 * Minimo valore presente nella colonna dei dati
+	 */
 	private double min;
+	/**
+	 * Massimo valore presente nella colonna dei dati
+	 */
 	private double max;
+	/**
+	 * Conteggio elementi non nulli
+	 */
 	private int count;
 	
+	/**
+	 * <p>Calcola le statistiche numeriche</p>
+	 * <p>Se un dato non fosse presente nel csv esso durante il parsing verrà inizializzato come una stringa vuota 
+	 * e verrà ignorato durante il calcolo</p>
+	 */
 	@Override
 	public void calc(List<Task> elems, String field) {
 		//Inizializzo il minimo e il massimo con il campo del primo elemento (non nullo) della lista
@@ -37,7 +74,7 @@ public class NumberStatCalculator extends StatCalculator {
 		for(Task x : elems) {
 			
 			Object temp = invokeMethod(x, field);
-			//Se l'attributo non era presente nel dataset esso è salvato come una stringa
+			//Se l'attributo non era presente nel dataset esso è salvato come una stringa vuota
 			//Perciò salto il ciclo
 			if(temp instanceof String) continue;
 			double num = 0;
