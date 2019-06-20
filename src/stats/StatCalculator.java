@@ -37,7 +37,7 @@ public abstract class StatCalculator {
 	/**
 	 * Metodo utilizzato per ottenere il valore dell'attributo, conoscendone il nome, 
 	 * di un qualsiasi oggetto invocando il getter appropriato. 
-	 * Utilizzato all'interno del metodo {@link #calc(List, String)calc} nelle sue due 
+	 * Utilizzato all'interno del metodo {@link #calc(List, String)} nelle sue due 
 	 * implementazioni
 	 * @param x l'oggetto da cui verrà invocato il getter
 	 * @param name nome dell'attributo

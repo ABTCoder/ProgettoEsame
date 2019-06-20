@@ -47,18 +47,39 @@ public class DoubleStatistics extends Statistics{
 		this.sum = sum;
 	}
 	
+	/**
+	 * Restituisce la media
+	 * @return media
+	 */
 	public double getAvg() {
 		return avg;
 	}
+	/**
+	 * Restituisce il minimo
+	 * @return minimo
+	 */
 	public double getMin() {
 		return min;
 	}
+	/**
+	 * Restituisce il massimo
+	 * @return massimo
+	 */
 	public double getMax() {
 		return max;
 	}
+	/**
+	 * Restituisce la deviazione
+	 * @return deviazione standard
+	 */
 	public double getStd() {
 		return std;
 	}
+	
+	/**
+	 * Restituisce la somma
+	 * @return somma
+	 */
 	public double getSum() {
 		return sum;
 	}

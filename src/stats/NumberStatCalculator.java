@@ -56,6 +56,8 @@ public class NumberStatCalculator extends StatCalculator {
 	 * <p>Calcola le statistiche numeriche</p>
 	 * <p>Se un dato non fosse presente nel csv esso durante il parsing verrà inizializzato come una stringa vuota 
 	 * e verrà ignorato durante il calcolo</p>
+	 * <p>Vengono utilizzati due cicli for each, uno per calcolare conteggio, somma, minimo, massimo e media, ed il
+	 * secondo per la deviazione standard</p>
 	 */
 	@Override
 	public void calc(List<Task> elems, String field) {

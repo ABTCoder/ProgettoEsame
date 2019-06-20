@@ -58,8 +58,8 @@ public class manage_tasks {
 	/**
 	 * Main
 	 * @param args
-	 * @throws MalformedURLException
-	 * @throws IOException
+	 * @throws MalformedURLException Se l'url è errato o la connessione non è andata a buon fine
+	 * @throws IOException Errore di lettura del csv
 	 */
 	public static void main(String[] args) throws MalformedURLException, IOException {
 		

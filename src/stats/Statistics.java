@@ -25,11 +25,17 @@ public class Statistics {
 		this.count = count;
 	}
 
-
+	/**
+	 * Restituisce il nome del campo per i numeri o l'elemento unico per le stringhe
+	 * @return nome campo / nome elemento unico
+	 */
 	public String getField() {
 		return field;
 	}
-
+	/**
+	 * Restituisce le ricorrenze dell' elemento unico per le stringhe o il numero di dati non vuoti per un campo di numeri
+	 * @return ricorrenze / conteggio
+	 */
 	public int getCount() {
 		return count;
 	}

@@ -33,14 +33,26 @@ public class Field {
 		this.alias = alias;
 	}
 	
+	/**
+	 * Restituisce il nome completo del campo, estratto dall'header del csv
+	 * @return nome completo del campo
+	 */
 	public String getField() {
 		return field;
 	}
 	
+	/**
+	 * Restituisce il tipo di dato associato al campo
+	 * @return tipo di dato
+	 */
 	public String getType() {
 		return type;
 	}
 	
+	/**
+	 * Restituisce l'alias utilizzato per le richieste GET
+	 * @return alias
+	 */
 	public String getAlias() {
 		return alias;
 	}

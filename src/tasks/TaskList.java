@@ -11,7 +11,7 @@ import stats.Statistics;
 import stats.StringStatCalculator;
 
 /**
- * Classe service che effettua il parsing del dataset ed esegue le richieste passate al REST Controller
+ * Classe service che effettua il parsing del dataset ed esegue le richieste passate al REST Controller.
  * <p>I due unici attributi sono statici in modo da poter essere richiamati dal controller pur essendo stati inizializzati nel main</p>
  * @author Amal Benson Thaliath
  *
@@ -107,6 +107,9 @@ public class TaskList {
 	/**
 	 * Service destinato al calcolo delle statistiche
 	 * <p>Calcola le statistiche sul campo (colonna dei dati) passato sotto il suo alias</p>
+	 * <p>Se l'alias è presente ottiene il tipo di dato associato dalla lista di metadati, 
+	 * successivamente crea uno {@link stats.StatCalculator} , se il dato è una string lo inizializza come
+	 * {@link stats.StringStatCalculator}, se è un numero come {@link stats.NumberStatCalculator} </p>
 	 * @param alias alias del campo
 	 * @return lista contenente le statistiche o la statistica del campo (sia per stringhe che per numeri)
 	 */

@@ -47,18 +47,38 @@ public class IntegerStatistics extends Statistics {
 		this.sum = (int)sum;
 	}
 	
+	/**
+	 * Restituisce la media
+	 * @return media
+	 */
 	public int getAvg() {
 		return avg;
 	}
+	/**
+	 * Restituisce il minimo
+	 * @return minimo
+	 */
 	public int getMin() {
 		return min;
 	}
+	/**
+	 * Restituisce il massimo
+	 * @return massimo
+	 */
 	public int getMax() {
 		return max;
 	}
+	/**
+	 * Restituisce la deviazione
+	 * @return deviazione standard
+	 */
 	public int getStd() {
 		return std;
 	}
+	/**
+	 * Restituisce la somma
+	 * @return somma
+	 */
 	public int getSum() {
 		return sum;
 	}
