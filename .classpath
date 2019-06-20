@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/User/Desktop/Progetti Java-Eclipse/ProgettoEsame/json/json-20180813.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Desktop/Progetti Java-Eclipse/ProgettoEsame/spring/spring-beans-5.1.7.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
