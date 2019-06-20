@@ -100,7 +100,7 @@ public class manage_tasks {
 		fr.close();
 		
 		SpringApplication.run(manage_tasks.class, args);//Applicazione spring
-			
+		System.out.println("PRONTO!");
 	}
 
 }
