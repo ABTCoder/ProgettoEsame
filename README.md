@@ -32,7 +32,9 @@ Soggetto conferente | soggetto
 Data inizio incarico | inizio
 Data fine incarico | fine
 Durata incarico (giorni) | durata
+
 Se il campo richiesto contiene stringhe verrà restituito il conteggio degli elementi unici (ricorrenze di ogni elemento unico). Il numero dell'atto e l'anno dell 'atto pur essendo numeri sono passati durante il parsing come stringhe, questo perchè il numero dell'atto è un codice univoco mentre l'anno è identico per tutti i dati, in entrambi casi ha poco senso calcolare le statistiche numeriche.
+
 Se il campo richiesto contiene numeri restituisce il conteggio di tutti i dati non vuoti, somma, media, minimo, massimo e deviazione standard. Per la durata le statistiche sono arrontondate.
 
 
